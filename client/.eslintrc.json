@@ -1,0 +1,58 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": [
+        "react-app",
+        "plugin:react/recommended",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier",
+        "prettier/@typescript-eslint",
+        "airbnb"
+      ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 11,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "import",
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+      "import/no-default-export": "error",
+      "no-console": "warn",
+      "no-unexpected-multiline": "warn",
+      "array-callback-return": "warn",
+      "react/self-closing-comp": [
+        "error",
+        {
+          "component": true,
+          "html": true
+        }
+      ],
+      "react/no-unescaped-entities": ["error", { "forbid": [">", "}", "\""] }],
+      "@typescript-eslint/explicit-function-return-type": 0,
+      "@typescript-eslint/interface-name-prefix": ["error", "always"],
+      "@typescript-eslint/explicit-member-accessibility": 0,
+      "@typescript-eslint/no-use-before-define": 0
+    },
+    "overrides": [
+      {
+        "files": ["**/*.tsx"],
+        "rules": {
+          "react/prop-types": "off"
+        }
+      }
+    ]
+}
