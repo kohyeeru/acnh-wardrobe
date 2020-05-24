@@ -50,6 +50,7 @@ class CategoryNavBar extends React.Component<{}, IState> {
         {categories.map((category) => {
             return <CategoryNavBarIcon
               key={category}
+              category={category}
               onClick={() => this.setActiveCategory(category)}
               isActive={category === activeCategory}
             />

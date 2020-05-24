@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Tooltip from '../Common/Tooltip';
 
 const unstyledButton = styled.button`
   background: none;
@@ -21,8 +22,8 @@ const Icon = styled.div<{ isActive: boolean }>`
   z-index: 1;
 
   background: ${props => props.isActive ? '#3e91d3' : '#a5c7c6'};
-  width: ${props => props.isActive ? '70%' : '50%'};
-  height: ${props => props.isActive ? '70%' : '50%'};
+  width: ${props => props.isActive ? '65%' : '50%'};
+  height: ${props => props.isActive ? '65%' : '50%'};
   border-radius: 50px;
 `
 
@@ -39,16 +40,27 @@ const IconButton = styled(unstyledButton)`
 `
 
 interface IProps {
+  category: string;
   onClick: () => void;
   isActive: boolean;
 }
 
 class CategoryNavBarIcon extends React.Component<IProps> {
   public render() {
-    const { onClick, isActive } = this.props;
+    const { category, onClick, isActive } = this.props;
 
     return (
       <IconButton onClick={onClick}>
+        {isActive &&
+          <Tooltip
+            text={category}
+            fontColor='ffffff'
+            backgroundColor='3e91d3'
+            borderRadius='8'
+            size='small'
+            showArrow={false}
+          />
+        }
         <Icon isActive={isActive} />
         <IconBackground />
       </IconButton>
