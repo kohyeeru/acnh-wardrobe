@@ -4,6 +4,7 @@ import { Categories } from './constants/categoryEnums';
 import { Outfit } from './constants/outfitTypes';
 import CategoryNavBar from './components/CategoryNavBar/CategoryNavBar';
 import CharacterDisplay from './components/CharacterDisplay/CharacterDisplay';
+import ClothingList from './components/ClothingList/ClothingList';
 
 const Wrapper = styled.div`
   position: fixed;
@@ -28,6 +29,18 @@ const CharacterDisplayWrapper = styled.div`
   top: 20vh;
   left: 50%;
   transform: translateX(-50%);
+`
+
+const ClothingListWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 90vw;
+  height: calc(100% - 150px);
+  padding-top: 150px;
+  overflow: scroll;
 `
 
 interface IState {
@@ -72,6 +85,9 @@ class App extends React.Component<{}, IState> {
             outfit={outfit}
           />
         </CharacterDisplayWrapper>
+        <ClothingListWrapper>
+          <ClothingList />
+        </ClothingListWrapper>
       </Wrapper>
     );
   }
