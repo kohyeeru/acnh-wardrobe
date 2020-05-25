@@ -30,8 +30,8 @@ const Icon = styled.div<{ isActive: boolean }>`
 // TODO: update width and height to be dynamic
 const IconBackground = styled.div`
   background: #c1e1dc;
-  width: 50px;
-  height: 50px;
+  width: 75px;
+  height: 75px;
   border-radius: 50px;
 `
 

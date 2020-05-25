@@ -6,7 +6,28 @@ import CategoryNavBar from './components/CategoryNavBar/CategoryNavBar';
 import CharacterDisplay from './components/CharacterDisplay/CharacterDisplay';
 
 const Wrapper = styled.div`
-  padding: 24px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background: #f9eff0;
+`
+
+const CategoryNavBarWrapper = styled.div`
+  position: relative;
+  width: min-content;
+  padding-top: 6vh;
+  margin: 0 auto;
+  z-index: 1;
+`
+
+const CharacterDisplayWrapper = styled.div`
+  position: absolute;
+  top: 20vh;
+  left: 50%;
+  transform: translateX(-50%);
 `
 
 interface IState {
@@ -43,10 +64,14 @@ class App extends React.Component<{}, IState> {
 
     return (
       <Wrapper>
-        <CategoryNavBar />
-        <CharacterDisplay
-          outfit={outfit}
-        />
+        <CategoryNavBarWrapper>
+          <CategoryNavBar />
+        </CategoryNavBarWrapper>
+        <CharacterDisplayWrapper>
+          <CharacterDisplay
+            outfit={outfit}
+          />
+        </CharacterDisplayWrapper>
       </Wrapper>
     );
   }

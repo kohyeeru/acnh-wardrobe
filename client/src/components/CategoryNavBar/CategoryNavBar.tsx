@@ -10,7 +10,7 @@ const NavBar = styled.div`
   width: min-content;
 
   & > :not(:first-child) {
-    margin-left: -8px;
+    margin-left: -12px;
   }
 `
 
