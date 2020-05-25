@@ -14,8 +14,9 @@ const NavBar = styled.div`
   }
 `
 
-interface IState {
-  activeCategory: Categories;
+interface IProps {
+  currentCategory: Categories;
+  setCurrentCategory: (category: Categories) => void;
 }
 
 const categories = [
@@ -29,21 +30,9 @@ const categories = [
   Categories.BAGS,
 ];
 
-class CategoryNavBar extends React.Component<{}, IState> {
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      activeCategory: Categories.TOPS,
-    }
-  }
-
-  public setActiveCategory(category: Categories) {
-    this.setState({ activeCategory: category })
-  }
-
+class CategoryNavBar extends React.Component<IProps> {
   public render() {
-    const { activeCategory } = this.state;
+    const { currentCategory, setCurrentCategory } = this.props;
 
     return (
       <NavBar>
@@ -51,8 +40,8 @@ class CategoryNavBar extends React.Component<{}, IState> {
             return <CategoryNavBarIcon
               key={category}
               category={category}
-              onClick={() => this.setActiveCategory(category)}
-              isActive={category === activeCategory}
+              onClick={() => setCurrentCategory(category)}
+              isActive={category === currentCategory}
             />
           }
         )}

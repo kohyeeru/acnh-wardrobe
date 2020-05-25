@@ -44,6 +44,7 @@ const ClothingListWrapper = styled.div`
 `
 
 interface IState {
+  currentCategory: Categories;
   outfit: Outfit;
 }
 
@@ -52,8 +53,15 @@ class App extends React.Component<{}, IState> {
     super(props);
 
     this.state = {
+      currentCategory: Categories.TOPS,
       outfit: {},
     }
+
+    this.setCurrentCategory = this.setCurrentCategory.bind(this);
+  }
+
+  public setCurrentCategory(category: Categories) {
+    this.setState({ currentCategory: category });
   }
 
   // TODO: amend to require only clothing name after library of clothing is created
@@ -73,12 +81,15 @@ class App extends React.Component<{}, IState> {
   }
 
   public render() {
-    const { outfit } = this.state;
+    const { currentCategory, outfit } = this.state;
 
     return (
       <Wrapper>
         <CategoryNavBarWrapper>
-          <CategoryNavBar />
+          <CategoryNavBar
+            currentCategory={currentCategory}
+            setCurrentCategory={this.setCurrentCategory}
+          />
         </CategoryNavBarWrapper>
         <CharacterDisplayWrapper>
           <CharacterDisplay
@@ -86,7 +97,7 @@ class App extends React.Component<{}, IState> {
           />
         </CharacterDisplayWrapper>
         <ClothingListWrapper>
-          <ClothingList />
+          <ClothingList currentCategory={currentCategory} />
         </ClothingListWrapper>
       </Wrapper>
     );
